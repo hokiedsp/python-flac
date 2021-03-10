@@ -1,0 +1,3 @@
+[submodule "extern/flac"]
+	path = extern/flac
+	url = https://gitlab.xiph.org/xiph/flac.git
