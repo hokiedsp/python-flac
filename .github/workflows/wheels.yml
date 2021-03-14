@@ -26,7 +26,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v1.8
@@ -58,8 +58,12 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest, windows-latest]
         arch: [x64]
+        cibw-arch: []
+        include:
+          - os: ubuntu-latest
+            cibw-arch: manylinux_x86_64
 
     name: Wheels • Python ${{ matrix.python-version }} • ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
@@ -82,8 +86,16 @@ jobs:
         run: |
           pip install --user twine build
 
-      - name: Build wheel
+      # - name: Build wheel
+      #   if: matrix.os != 'ubuntu-latest'
+      #   run: |
+      #     python -m build --wheel --outdir wheelhouse
+
+      - name: Build manylinux wheel
+        # if: matrix.os == 'ubuntu-latest'
         uses: joerick/cibuildwheel@v1.10.0
+        env:
+          CIBW_SKIP: cp27-*
 
       - name: Install from wheel (excl. Windows)
         if: matrix.os != 'windows-latest'
