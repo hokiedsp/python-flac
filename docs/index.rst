@@ -10,11 +10,35 @@ Welcome to flacfile's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   Documentation for the Code
+**************************
+
+.. automodule:: an_example_pypi_project
 
 
-Indices and tables
-==================
+useful #1 -- auto members
+=========================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+This is something I want to say that is not in the docstring.
+
+.. automodule:: an_example_pypi_project.useful_1
+   :members:
+
+.. useful #2 -- explicit members
+.. =============================
+
+.. This is something I want to say that is not in the docstring.
+
+.. .. automodule:: an_example_pypi_project.useful_2
+..    :members: public_fn_with_sphinxy_docstring, _private_fn_with_docstring
+
+.. .. autoclass:: MyPublicClass
+..    :members: get_foobar, _get_baz
+
+
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
