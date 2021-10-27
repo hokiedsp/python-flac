@@ -89,7 +89,7 @@ jobs:
 
       - name: Build manylinux wheel
         # if: matrix.os == 'ubuntu-latest'
-        uses: joerick/cibuildwheel@v1.10.0
+        uses: joerick/cibuildwheel@v2.2.2
         env:
           CIBW_SKIP: pp*-* cp27-* cp35-* *-win32 *-manylinux_i686
           # CIBW_ARCHS_MACOS: x86_64 universal2 arm64
